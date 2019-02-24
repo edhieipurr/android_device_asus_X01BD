@@ -121,6 +121,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     sdm.perf_hint_window=50 \
     vendor.display.enable_default_color_mode=1
 
+# Havoc Maintainer
+PRODUCT_PROPERTY_OVERRIDES += \
+ro.havoc.maintainer=SonalSingh
+
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true \
