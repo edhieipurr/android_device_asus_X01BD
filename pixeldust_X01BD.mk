@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2018 The Pixeldust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,18 +19,33 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
-# Inherit some common arrow stuff
-$(call inherit-product, vendor/arrow/config/common.mk)
+# Inherit some common PixelDust stuff
+$(call inherit-product, vendor/pixeldust/configs/pixeldust_phone.mk)
+#$(call inherit-product, vendor/googleapps/googleapps.mk)
+
+# Bootanimation Resolution
+TARGET_SCREEN_HEIGHT := 2160
+TARGET_SCREEN_WIDTH := 1080
+
+# Include optional stuff (e.g. prebuilt apps)
+include vendor/pixeldust/configs/system_optional.mk
 
 # Inherit from X01BD device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := arrow_X01BD
+PRODUCT_NAME := pixeldust_X01BD
 PRODUCT_DEVICE := X01BD
 PRODUCT_BRAND := asus
 PRODUCT_MODEL := Zenfone Max Pro M2
 PRODUCT_MANUFACTURER := asus
+
+# Build  Type
+PD_BUILDTYPE := Official
+DEVICE_MAINTAINERS=SonalSingh
+
+# Pixel Dust ROM package name
+PIXELDUST_VERSION := $(TARGET_PRODUCT)-pie-release-$(shell date -u +%Y%m%d-%H%M)
 
 PRODUCT_GMS_CLIENTID_BASE := android-asus
 

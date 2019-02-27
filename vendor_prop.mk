@@ -163,6 +163,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.backup.ntpServer="0.pool.ntp.org"
 
+# PixelDust Maintainer
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.pixeldust.maintainer=SonalSingh
 # QCOM cabl
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.cabl=2
