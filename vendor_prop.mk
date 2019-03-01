@@ -121,9 +121,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     sdm.perf_hint_window=50 \
     vendor.display.enable_default_color_mode=1
 
-# Havoc Maintainer
+# PixelDust Maintainer
 PRODUCT_PROPERTY_OVERRIDES += \
-ro.havoc.maintainer=SonalSingh
+ro.pixeldust.maintainer=SonalSingh
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \

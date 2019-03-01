@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The HavocOS Project
+# Copyright (C) 2018 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,8 +20,5 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
-for var in eng user userdebug; do
-  add_lunch_combo havoc_X01BD-eng
-  add_lunch_combo havoc_X01BD-user
-  add_lunch_combo havoc_X01BD-userdebug
-done
+add_lunch_combo pixeldust_X01BD-user
+add_lunch_combo pixeldust_X01BD-userdebug
