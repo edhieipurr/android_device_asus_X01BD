@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2018 The PixelDust Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,14 +19,24 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
-# Inherit some common arrow stuff
-$(call inherit-product, vendor/arrow/config/common.mk)
+# Inherit pixeldust vendor
+$(call inherit-product, vendor/pixeldust/configs/pixeldust_phone.mk)
+
+# Include optional stuff (e.g. prebuilt apps)
+include vendor/pixeldust/configs/system_optional.mk
+
+# Include prebuilt Pixel Launcher
+include vendor/pixeldust/configs/nexuslauncher.mk
+
+# Boot Animation
+TARGET_SCREEN_HEIGHT := 2280
+TARGET_SCREEN_WIDTH := 1080
 
 # Inherit from X01BD device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := arrow_X01BD
+PRODUCT_NAME := pixeldust_X01BD
 PRODUCT_DEVICE := X01BD
 PRODUCT_BRAND := asus
 PRODUCT_MODEL := Zenfone Max Pro M2
@@ -47,3 +57,10 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="jason-user 7.1.1 NMF26X V9.6.2.0.NCHMIFD release-keys"
 
 BUILD_FINGERPRINT := "Xiaomi/jason/jason:7.1.1/NMF26X/V9.6.2.0.NCHMIFD:user/release-keys"
+
+# Maintainer
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.pixeldust.maintainer="SonalSingh"
+
+# Use SDCLANG
+TARGET_USE_SDCLANG := true 
