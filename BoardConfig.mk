@@ -247,6 +247,12 @@ VENDOR_SECURITY_PATCH := 2018-12-05
 #BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 BOARD_SEPOLICY_VERS := 28.0
 
+# Soong Namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/qcom/audio-caf/msm8998 \
+    hardware/qcom/display-caf/msm8998 \
+    hardware/qcom/media-caf/msm8998
+
 # Tap to wake
 TARGET_TAP_TO_WAKE_NODE := /proc/tpd_gesture
 
