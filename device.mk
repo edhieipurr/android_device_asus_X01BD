@@ -238,13 +238,21 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video_le.xml
 
-
 # Media Extensions
 PRODUCT_PACKAGES += \
     libavmediaserviceextensions \
     libmediametrics \
     libregistermsext \
     mediametrics
+
+# Lawnchair
+PRODUCT_PACKAGES += \
+    Lawnchair \
+    LawnConf
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilts/etc/permissions/privapp-permissions-lawnchair.xml:system/etc/permissions/privapp-permissions-lawnchair.xml \
+    $(LOCAL_PATH)/prebuilts/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml:system/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml
 
 # Netutils
 PRODUCT_PACKAGES += \
