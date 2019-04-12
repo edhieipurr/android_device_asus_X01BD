@@ -342,11 +342,9 @@ PRODUCT_PACKAGES += \
 # Telephony
 PRODUCT_PACKAGES += \
     qti-telephony-common \
-    ims-ext-common \
-    telephony-ext
+    ims-ext-common 
 
 PRODUCT_BOOT_JARS += \
-    telephony-ext \
     WfdCommon
 
 # Seccomp
@@ -414,8 +412,9 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti
-	
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service
+
 # RenderScript HAL
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl

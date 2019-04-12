@@ -1,0 +1,2 @@
+add_lunch_combo nitrogen_X01BD-userdebug
+add_lunch_combo nitrogen_X01BD-eng

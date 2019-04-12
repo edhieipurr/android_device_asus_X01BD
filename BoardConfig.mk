@@ -33,7 +33,7 @@ TARGET_2ND_CPU_VARIANT := kryo
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 earlycon=msm_serial_dm,0xc170000 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=1 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
 BOARD_KERNEL_CMDLINE += loop.max_part=7
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
@@ -45,8 +45,6 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/asus/sdm660
 TARGET_KERNEL_CONFIG := m2pro_defconfig
-TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CLANG_VERSION := 9.0.1
 
 # Assert
 TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
@@ -222,6 +220,7 @@ PRODUCT_FULL_TREBLE_OVERRIDE := true
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # Power
+TARGET_HAS_NO_WIFI_STATS := true
 TARGET_USES_INTERACTION_BOOST := true
 
 # Peripheral manager
@@ -233,6 +232,10 @@ TARGET_PER_MGR_ENABLED := true
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
+# RIL
+TARGET_RIL_VARIANT := caf
+PROTOBUF_SUPPORTED := true
+
 # Recovery
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/recovery.fstab
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -240,10 +243,6 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 # Releasetools
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_X01BD
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
-
-# RIL
-TARGET_RIL_VARIANT := caf
-PROTOBUF_SUPPORTED := true
 
 # root extra folders
 BOARD_ROOT_EXTRA_FOLDERS := bt_firmware dsp firmware persist
@@ -255,10 +254,10 @@ BOARD_SECCOMP_POLICY := $(DEVICE_PATH)/seccomp
 VENDOR_SECURITY_PATCH := 2018-12-05
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
-BOARD_SEPOLICY_VERS := 28.0
-SELINUX_IGNORE_NEVERALLOWS := true
+#include device/qcom/sepolicy/sepolicy.mk
+#BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+#BOARD_SEPOLICY_VERS := 28.0
+#SELINUX_IGNORE_NEVERALLOWS := true
 
 # Tap to wake
 TARGET_TAP_TO_WAKE_NODE := /proc/tpd_gesture
@@ -274,12 +273,21 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
-WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
+#WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_DRIVER_OPERSTATE_PATH := "/sys/class/net/wlan0/operstate"
 WIFI_DRIVER_STATE_CTRL_PARAM := "/sys/kernel/boot_wlan/boot_wlan"
 WIFI_DRIVER_STATE_OFF := 0
 WIFI_DRIVER_STATE_ON := 1
+
+# Hals
+TARGET_QCOM_MEDIA_VARIANT := caf-msm8998
+TARGET_QCOM_DISPLAY_VARIANT := caf-msm8998
+TARGET_QCOM_AUDIO_VARIANT := caf-msm8998
+ PRODUCT_SOONG_NAMESPACES += \
+	hardware/qcom/display-$(TARGET_QCOM_DISPLAY_VARIANT) \
+	hardware/qcom/audio-$(TARGET_QCOM_AUDIO_VARIANT) \
+	hardware/qcom/media-$(TARGET_QCOM_MEDIA_VARIANT)
 
 # inherit from the proprietary version
 -include vendor/asus/X01BD/BoardConfigVendor.mk
