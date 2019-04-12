@@ -222,6 +222,7 @@ PRODUCT_FULL_TREBLE_OVERRIDE := true
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # Power
+TARGET_HAS_NO_WIFI_STATS := true
 TARGET_USES_INTERACTION_BOOST := true
 
 # Peripheral manager
@@ -280,6 +281,12 @@ WIFI_DRIVER_OPERSTATE_PATH := "/sys/class/net/wlan0/operstate"
 WIFI_DRIVER_STATE_CTRL_PARAM := "/sys/kernel/boot_wlan/boot_wlan"
 WIFI_DRIVER_STATE_OFF := 0
 WIFI_DRIVER_STATE_ON := 1
+
+# Hals
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/qcom/audio-caf/msm8998 \
+    hardware/qcom/display-caf/msm8998 \
+    hardware/qcom/media-caf/msm8998
 
 # inherit from the proprietary version
 -include vendor/asus/X01BD/BoardConfigVendor.mk

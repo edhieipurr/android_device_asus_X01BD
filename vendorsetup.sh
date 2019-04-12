@@ -1,0 +1,2 @@
+add_lunch_combo pixeldust_X01BD-user
+add_lunch_combo pixeldust_X01BD-userdebug
