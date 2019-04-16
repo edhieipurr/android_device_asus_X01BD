@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2018 The PearlOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,14 +19,20 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
 
-# Inherit some common arrow stuff
-$(call inherit-product, vendor/arrow/config/common.mk)
+# Inherit some common pearl stuff
+$(call inherit-product, vendor/pearl/config/common.mk)
+
+TARGET_BOOT_ANIMATION_RES := 1080
+
+CPU_MODEL := "Snapdragon_660"
+PEARL_BUILD_TYPE := OFFICIAL
+PEARL_MAINTAINER := Sonal_Singh
 
 # Inherit from X01BD device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := arrow_X01BD
+PRODUCT_NAME := pearl_X01BD
 PRODUCT_DEVICE := X01BD
 PRODUCT_BRAND := asus
 PRODUCT_MODEL := Zenfone Max Pro M2
