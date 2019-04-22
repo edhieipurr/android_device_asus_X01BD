@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The Xtended Project
+# Copyright (C) 2018-19 The Xtended Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,5 +14,12 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/xtended_X01BD.mk
+# This file is executed by build/envsetup.sh, and can use anything
+# defined in envsetup.sh.
+#
+# In particular, you can add lunch options with the add_lunch_combo
+# function: add_lunch_combo generic-eng
+
+for var in eng user userdebug; do
+  add_lunch_combo havoc_X01BD-$var
+done
